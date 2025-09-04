@@ -1,0 +1,28 @@
+# Python প্যাকেজ ম্যানেজার আপডেট করুন
+pip install --upgrade pip
+
+termux-setup-storage
+
+# প্রয়োজনীয় প্যাকেজগুলি ইন্সটল করুন
+pip install pyjwt
+pip install requests
+pip install google-cloud
+pip install protobuf
+pip install base64
+pip install logging
+pip install re
+pip install socket
+pip install os
+pip install binascii
+pip install sys
+pip install psutil
+pip install time
+pip install threading
+pip install random
+pip install json
+pip install datetime
+pip install Crypto
+pip install pycryptodome
+pip install httpx
+pip install urllib3
+pip install protobuf-decoder

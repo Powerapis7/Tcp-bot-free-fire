@@ -1,0 +1,9 @@
+pyjwt==2.8.0
+requests==2.31.0
+google-cloud==0.34.0
+protobuf==3.20.3
+pycryptodome==3.20.0
+psutil==5.9.8
+httpx==0.27.0
+urllib3==2.1.0
+protobuf-decoder==0.4.0
