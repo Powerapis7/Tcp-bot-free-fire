@@ -33,7 +33,37 @@ import httpx
 import urllib3
 import MajorLoginRes_pb2
 import jwt_generator_pb2
+from flask import Flask, render_template, request
 
+# Cria a aplicação Flask
+app = Flask(__name__)
+
+# Rota principal
+@app.route('/')
+def home():
+    return "<h1>Olá, Flask!</h1><p>Este é um app simples.</p>"
+
+# Rota com parâmetro
+@app.route('/saudacao/<nome>')
+def saudacao(nome):
+    return f"<h1>Olá, {nome}!</h1>"
+
+# Rota POST simples
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        return f"<h1>Você enviou: {nome}</h1>"
+    return '''
+        <form method="POST">
+            Nome: <input type="text" name="nome">
+            <input type="submit">
+        </form>
+    '''
+
+# Roda a aplicação
+if __name__ == '__main__':
+    app.run(debug=True)
 ####################################
 # FUCK SSL BY JOBAYAR MODX
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
