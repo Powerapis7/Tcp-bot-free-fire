@@ -40,4 +40,4 @@ if __name__ == "__main__":
     # Thread 2 → servidor Flask
     port = int(os.environ.get("PORT", 5000))
     print(f"🌍 Servidor Flask rodando na porta {port}")
-    app.run(host="0.0.0.0", port=port)__name__
+    app.run(host="0.0.0.0", port=port)
