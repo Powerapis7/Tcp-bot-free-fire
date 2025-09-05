@@ -12,16 +12,21 @@ def home():
 
 def start_gst():
     try:
-        # inicia GST-TCP.py e captura logs stdout/stderr
+        script_path = os.path.join(os.getcwd(), "GST-TCP.py")
+        if not os.path.exists(script_path):
+            print(f"[ERRO] Não achei o arquivo: {script_path}")
+            return
+
+        print(f"[INFO] Iniciando GST-TCP.py em {script_path}...")
+
         process = subprocess.Popen(
-            ["python", "GST-TCP.py"],
+            ["python", script_path],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
             bufsize=1
         )
 
-        # lê a saída em tempo real e repassa para os logs do Render
         for line in process.stdout:
             print(f"[GST-TCP] {line.strip()}")
 
@@ -32,7 +37,7 @@ if __name__ == "__main__":
     # Thread 1 → script do bot
     threading.Thread(target=start_gst, daemon=True).start()
 
-    # Thread 2 → servidor Flask (para Render)
+    # Thread 2 → servidor Flask
     port = int(os.environ.get("PORT", 5000))
     print(f"🌍 Servidor Flask rodando na porta {port}")
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)__name__
